@@ -20,8 +20,33 @@ export default function Weather() {
   }
 
   return (
-    <h4>
-      The temperature in {city} is {temperature}°C
-    </h4>
+    <div className="Weather">
+      <form>
+        <input
+          type="search"
+          placeholder="Enter a city"
+          className="form-control"
+        />
+        <input type="submit" value="Search" className="btn btn-primary" />
+      </form>
+      <h1>{city}</h1>
+      <ul>
+        <li>Monday 08:00</li>
+        <li>Sunny</li>
+      </ul>
+      <div className="row">
+        <div className="col-6">
+          <img src="" alt="Sunny" />
+          {temperature}°C
+        </div>
+        <div className="col-6">
+          <ul>
+            <li>Precipitation: 15%</li>
+            <li>Humidity: 42%</li>
+            <li>Wind: 13 km/h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
