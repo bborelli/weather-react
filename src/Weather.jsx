@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -10,14 +11,25 @@ export default function Weather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      temperature: Math.round(response.data.main.temp),
-      humidity: response.data.main.humidity,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon,
-      city: response.data.name,
-      date: new Date((response.data.dt + response.data.timezone) * 1000),
+      description: response.data.condition.description,
+      icon: response.data.condition.icon_url,
+      city: response.data.city,
+      date: new Date(response.data.time * 1000),
     });
+  }
+
+  function searchWeather() {
+    const apiKey = "4fbe9b2c44d0f8a0833d1te403cbb78o";
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios
+      .get(apiUrl)
+      .then(handleResponse)
+      .catch(() => {
+        alert("City not found. Please try again.");
+      });
   }
 
   function handleSubmit(event) {
@@ -27,12 +39,6 @@ export default function Weather(props) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
-  }
-
-  function searchWeather() {
-    const apiKey = "597c40c39084687093b091cd48b366f8";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
   }
 
   if (!weatherData.ready) {
@@ -63,6 +69,7 @@ export default function Weather(props) {
         </div>
       </form>
       <WeatherInfo data={weatherData} />
+      <WeatherForecast city={weatherData.city} />
     </div>
   );
 }

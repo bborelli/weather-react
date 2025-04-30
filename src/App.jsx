@@ -9,13 +9,20 @@ export default function App() {
         <Weather defaultCity="Lisbon" />
 
         <footer>
-          This project was coded by Bruna Borelli and can be seen on
+          This project was coded by{" "}
+          <a
+            href="https://bruna-borelli-front-end-dev.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bruna Borelli
+          </a>{" "}
+          and can be seen on{" "}
           <a
             href="https://github.com/bborelli/weather-react"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {" "}
             GitHub.
           </a>
         </footer>

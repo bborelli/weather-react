@@ -5,33 +5,29 @@ import WeatherTemperature from "./WeatherTemperature";
 export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
-      <h1>{props.data.city}</h1>
-      <ul>
-        <li>
-          <FormattedDate date={props.data.date} />
-        </li>
-        <li className="text-capitalize">{props.data.description}</li>
-      </ul>
-      <div className="row mt-3">
-        <div className="col-6">
-          <div className="d-flex">
-            <div>
-              <img
-                src={`http://openweathermap.org/img/wn/${props.data.icon}@2x.png`}
-                alt={props.data.description}
-                width={52}
-              />
-            </div>
-            <div>
-              <WeatherTemperature celsius={props.data.temperature} />
-            </div>
-          </div>
-        </div>
-        <div className="col-6">
+      <div className="WeatherInfo-header">
+        <div className="WeatherInfo-text">
+          <h1>{props.data.city}</h1>
           <ul>
-            <li>Humidity: {props.data.humidity}%</li>
-            <li>Wind: {props.data.wind} km/h</li>
+            <li>
+              <FormattedDate date={props.data.date} />
+            </li>
+            <li className="text-capitalize">{props.data.description}</li>
+            <li className="WeatherInfo-small">
+              <span>Humidity: {props.data.humidity}%</span> |{" "}
+              <span>Wind: {props.data.wind} km/h</span>
+            </li>
           </ul>
+        </div>
+
+        <div className="WeatherInfo-main">
+          <img
+            src={props.data.icon}
+            alt={props.data.description}
+            width={52}
+            height={52}
+          />
+          <WeatherTemperature celsius={props.data.temperature} />
         </div>
       </div>
     </div>

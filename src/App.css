@@ -4,7 +4,13 @@
 }
 
 .App footer {
-  font-size: 11px;
-  margin: 10px 0;
+  font-size: 12px;
+  margin-top: 20px;
   text-align: center;
+  color: rgb(150, 150, 150);
+}
+
+.App footer a {
+  color: inherit;
+  text-decoration: underline;
 }

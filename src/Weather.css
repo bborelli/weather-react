@@ -1,9 +1,12 @@
+/* === Weather container === */
 .Weather {
   font-family: arial, sans-serif;
   border: 1px solid #dadde1;
   padding: 16px;
   border-radius: 4px;
   color: rgb(135, 135, 135);
+  max-width: 600px;
+  margin: 30px auto;
 }
 
 .Weather h1 {
@@ -20,9 +23,17 @@
 
 .Weather li {
   font-size: 16px;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 19px;
   list-style: none;
+}
+
+/* === Temperature === */
+.WeatherTemperature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .Weather .temperature {
@@ -30,10 +41,7 @@
   color: rgb(33, 33, 33);
   font-size: 64px;
   line-height: 64px;
-  margin-left: 10px;
 }
-
-/* removido .Weather .unit */
 
 .WeatherTemperature .unit {
   margin-left: 8px;
@@ -56,4 +64,164 @@
   color: rgb(33, 33, 33);
   cursor: default;
   pointer-events: none;
+}
+
+/* === Weather mood backgrounds === */
+.weather-clear-sky {
+  background: linear-gradient(135deg, #fefcea, #f1da36);
+  color: #1a1a1a;
+}
+
+.weather-few-clouds,
+.weather-scattered-clouds,
+.weather-broken-clouds {
+  background: linear-gradient(135deg, #d7dde8, #f0f2f5);
+  color: #1a1a1a;
+}
+
+.weather-shower-rain,
+.weather-rain,
+.weather-light-rain {
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  color: #1a1a1a;
+}
+
+.weather-thunderstorm {
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: #f7f7f7;
+}
+
+.weather-snow {
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  color: #1a1a1a;
+}
+
+.weather-mist {
+  background: linear-gradient(135deg, #d3cce3, #e9e4f0);
+  color: #1a1a1a;
+}
+
+/* === WeatherInfo layout === */
+.WeatherInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.WeatherInfo h1,
+.WeatherInfo li {
+  transition: color 0.4s ease;
+}
+
+.WeatherInfo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.WeatherInfo-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.WeatherInfo-main img {
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.weather-thunderstorm .WeatherInfo img {
+  filter: brightness(0) invert(1);
+}
+
+.WeatherInfo li.WeatherInfo-small {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  margin-top: 6px;
+  opacity: 0.75;
+}
+
+/* === Forecast === */
+.WeatherForecast {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.WeatherForecast .col {
+  padding: 10px;
+}
+
+.WeatherForecastDay {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  transition: transform 0.2s ease;
+}
+
+.WeatherForecastDay:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.WeatherForecast-day {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.WeatherForecast-temperatures {
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.WeatherForecast-temperature-max {
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.WeatherForecast-temperature-min {
+  opacity: 0.6;
+  margin-left: 6px;
+  color: #555;
+}
+
+.WeatherForecastDay img {
+  filter: contrast(120%) brightness(0.9);
+}
+
+/* === Responsiveness === */
+@media (max-width: 576px) {
+  .WeatherForecast .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .WeatherForecast .col {
+    width: 100%;
+    padding: 0;
+  }
+
+  .WeatherForecastDay {
+    width: 90%;
+  }
+
+  .WeatherInfo-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .WeatherInfo-main {
+    margin-top: 10px;
+  }
 }
