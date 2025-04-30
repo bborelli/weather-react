@@ -24,3 +24,36 @@
   line-height: 19px;
   list-style: none;
 }
+
+.Weather .temperature {
+  font-weight: 400;
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 64px;
+  margin-left: 10px;
+}
+
+/* removido .Weather .unit */
+
+.WeatherTemperature .unit {
+  margin-left: 8px;
+  font-size: 16px;
+  color: rgb(135, 135, 135);
+}
+
+.WeatherTemperature .unit a {
+  text-decoration: none;
+  color: rgb(135, 135, 135);
+}
+
+.WeatherTemperature .unit a:hover {
+  text-decoration: underline;
+  color: rgb(70, 70, 70);
+}
+
+.WeatherTemperature .unit .active {
+  font-weight: bold;
+  color: rgb(33, 33, 33);
+  cursor: default;
+  pointer-events: none;
+}
